@@ -23,6 +23,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'seed_dump', '~> 3.3', '>= 3.3.1'
+
+gem 'faker', '~> 1.9', '>= 1.9.3'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
