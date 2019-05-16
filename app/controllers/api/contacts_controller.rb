@@ -1,7 +1,7 @@
 class Api::ContactsController < ApplicationController
   def index
     if current_user
-      @contacts = Contact.all
+      @contacts = current_user.contacts
 
       first_name_search = params[:first_name]
       all_search = params[:search]
@@ -21,7 +21,7 @@ class Api::ContactsController < ApplicationController
         @contacts = @contacts.where("first_name iLIKE ?", "%#{first_name_search}%")
       end
 
-      @contacts.order(:id)
+      @contacts = @contacts.order(:id)
 
       render 'index.json.jbuilder'
     else
@@ -36,7 +36,8 @@ class Api::ContactsController < ApplicationController
                           last_name: params[:last_name],
                           email: params[:email],
                           phone_number: params[:phone_number],
-                          bio: params[:bio]
+                          bio: params[:bio],
+                          user_id: current_user.id
                           )
 
     if @contact.save
