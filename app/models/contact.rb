@@ -12,6 +12,8 @@ class Contact < ApplicationRecord
   # validates :bio, length: {in: 50..200}
 
   belongs_to :user
+  has_many :contact_groups
+  has_many :groups, through: :contact_groups
 
   def friendly_updated_at
     updated_at.strftime("%b%e, %Y,%l:%M %p %Z")
