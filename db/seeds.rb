@@ -1,6 +1,10 @@
+groups = Group.all
+contacts = Contact.all
 
-ContactGroup.create(contact_id: 6, group_id: 1)
-ContactGroup.create(contact_id: 4, group_id: 1)
-ContactGroup.create(contact_id: 3, group_id: 1)
-ContactGroup.create(contact_id: 7, group_id: 1)
-ContactGroup.create(contact_id: 6, group_id: 1)
+contacts.each do |contact|
+  selected_groups = groups.sample(3)
+
+  selected_groups.each do |group|
+    ContactGroup.create(contact_id: contact.id, group_id: group.id)
+  end
+end
